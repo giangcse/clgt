@@ -39,3 +39,33 @@ $(document).ready(function () {
         e.stopPropagation();
     });
 });
+// JQuery post image
+$(document).ready(function () {
+    $('#file-img').change(function (e) {
+        e.preventDefault();
+        var file_data = $('#file-img').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        // Loading animation
+        $('#button-img').html('<span class="spinner-border spinner-border-sm text-success" role="status" aria-hidden="true"></span> Loading...');
+        $.ajax({
+            url: 'http://10.91.13.144:8000',
+            // dataType: 'file',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+                $('#button-img').html('Success');
+                var img = new Image();
+                img.src = 'data:image/png;base64,' + data.data;
+                // $("#result").attr("src", img.src);
+                document.getElementById("result-img").src = img.src;
+                // $('#result').
+                // alert(data.data);
+            }
+        });
+        e.stopPropagation();
+    });
+});
