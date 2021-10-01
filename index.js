@@ -23,7 +23,7 @@ $(document).ready(function () {
         // Loading animation
         $('#button').html('<span class="spinner-border spinner-border-sm text-success" role="status" aria-hidden="true"></span> Loading...');
         $.ajax({
-            url: 'http://087f-113-161-196-10.ngrok.io',
+            url: 'http://10.91.13.144:81',
             // dataType: 'file',
             cache: false,
             contentType: false,
